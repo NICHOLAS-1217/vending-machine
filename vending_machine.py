@@ -200,12 +200,12 @@ def nfa_epsilon_closure(states):
    closure = set(states)
    
    if "DISPENSING" in closure and nfa_change > 0:
-      closure.add("CHANGE_CALCULATION")
-      print("🔄 NFA Epsilon Transition: DISPENSING -> CHANGE_CALCULATION")
-   
-   if "CHANGE_CALCULATION" in closure:
       closure.add("CHANGE_RETURN")
-      print("🔄 NFA Epsilon Transition: CHANGE_CALCULATION -> CHANGE_RETURN")
+      print("🔄 NFA Epsilon Transition: DISPENSING -> CHANGE_RETURN")
+   
+   if "CHANGE_RETURN" in closure:
+      closure.add("IDLE")
+      print("🔄 NFA Epsilon Transition: CHANGE_RETURN -> IDLE")
     
    return closure
 
